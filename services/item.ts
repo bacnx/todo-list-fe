@@ -9,3 +9,13 @@ export const addItem = async (content: string) => {
   const res = await baseAxios.post("/items", { content });
   return res;
 };
+
+export const deleteItem = async (id: number) => {
+  const res = await baseAxios.delete(`/items/${id}`);
+  return res;
+};
+
+export const retrieveList = async () => {
+  const res = await baseAxios.post("/retrieve");
+  return res;
+};

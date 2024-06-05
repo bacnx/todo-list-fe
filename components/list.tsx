@@ -1,11 +1,12 @@
 "use client";
-import { useEffect, useState } from "react";
-import type { ItemType } from "@/type";
+import { useEffect } from "react";
 import { Item } from "./item";
 import { listItem } from "@/services";
+import { useStore } from "@/store";
 
 export const List = () => {
-  const [list, setList] = useState<ItemType[]>([]);
+  const list = useStore((state) => state.items);
+  const setList = useStore((state) => state.replaceList);
 
   useEffect(() => {
     (async () => {

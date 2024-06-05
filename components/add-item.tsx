@@ -1,15 +1,18 @@
 "use client";
 
 import { addItem } from "@/services";
+import { useStore } from "@/store";
 import { useState } from "react";
 
 export const AddItem = () => {
   const [value, setValue] = useState("");
+  const storeAddItem = useStore((state) => state.addItem);
 
   const onSubmit = async () => {
     if (value === "") return;
     const res = await addItem(value);
-    console.log(res);
+    storeAddItem(res.data.item);
+    setValue("");
   };
 
   return (
